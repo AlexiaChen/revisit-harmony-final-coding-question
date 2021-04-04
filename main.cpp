@@ -30,7 +30,7 @@ public:
             }
         }
 
-        queue.insert(queue.end(), Item(data, priority));
+        queue.insert(current, Item(data, priority));
           
       
     }
