@@ -1,5 +1,6 @@
 #include <iostream>
-#include <queue>
+#include <list>
+#include <algorithm>
 
 struct Item 
 {
@@ -8,33 +9,48 @@ public:
 public:
     Item(int data, int priority) {data_ = data; priority_ = priority;}
 };
-
-
-struct compare{
-public:
-  bool operator()(Item& a,Item& b) 
-  {
-       return a.priority_ > b.priority_;
-  }
-};
-
 class PriorityQueue
 {
 public:
     void putItem(int data, int priority)
     {
-        queue.push(Item(data, priority));
+        auto current = queue.begin();
+        while(current != queue.end())
+        {   
+            if(priority < current->priority_)
+            {
+                
+                queue.insert(current, Item(data, priority));
+                return;
+                
+            }
+            else
+            {
+                current++;
+            }
+        }
+
+        queue.insert(queue.end(), Item(data, priority));
+          
+      
     }
 
     int getNextItem()
     {
-        int data = queue.top().data_;
-        queue.pop();
-        return data;
+       if(queue.empty())
+       {
+           return -1;
+       }
+       else
+       {
+           int data = queue.front().data_;
+           queue.pop_front();
+           return data;
+       }
     }
 
 private:
-    std::priority_queue<Item, std::vector<Item>, compare> queue;
+    std::list<Item> queue;
 };
 
 int main()
