@@ -202,12 +202,169 @@ int main()
 
 - the question answer below if could not use C++ standard library about any related data structure:
 
-this is my answer in the final interview, but it is not completed at that time.
+this is my answer in the final interview, but it is **not completed** at that time, and my brain goes blank.
 
 ```cpp
+typedef struct Node {
+    int data;
+    int priority;
+}Node;
+
+class PriorityQueue
+{
+public:
+    PriorityQueue(): dummyHead(nullptr)
+    {
+        dummyHead = new Node();
+        dummyHead->data = -99;
+        dummyHead->priority = -99;
+        dummyHead->next = nullptr;
+    }
+    void insert(int data, int priority)
+    {
+       // corner case that interviewer show me some tips:
+       // 1. when the list is empty
+       // 2. when the item to be inserted is at first
+       // 3. when the item to be inserted is at last
+       // 4. when the item to be inserted is at the middle?
+       Node* temp = dummyHead->next;
+       while(temp)
+       {
+           if(temp->priority <= priority)
+           {
+               break;
+           }
+
+           temp = temp->next;
+       }
+    }
+
+    // just only completed this method at that time
+    Node get_next()
+    {
+       if(dummy->next)
+       {
+           Node node;
+           node.data = dummyHead->next->data;
+           node.priority = dummyHead->next->priority;
+
+           // remove node
+           Node* be_deleted_node = dummyHead->next;
+           Node* nextNode = be_deleted_node->next;
+           delete be_deleted_node;
+           dummyHead->next = nextNode;
+
+           return node;
+       }
+
+       Node node;
+       node.data = -99;
+       node.priority = -99;
+       return node;
+      
+    }
+
+private:
+    Node* dummyHead;
+};
 ```
 
 this is my answer now, for completing the question
 
 ```cpp
+#include <iostream>
+
+struct Item 
+{
+public:
+    int data_, priority_;
+    Item* next;
+public:
+    Item(int data, int priority): data_(data), priority_(priority), next(nullptr)  
+    {}
+};
+class PriorityQueue
+{
+public:
+    PriorityQueue(): dummyHead_(nullptr), dummyEnd_(nullptr)
+    {
+        dummyHead_ = new Item(-1, -1);
+        dummyEnd_ = new Item(-1, -1);
+        dummyHead_->next = dummyEnd_;
+    }
+    void putItem(int data, int priority)
+    {
+        Item* current = dummyHead_->next;
+        Item* prev = dummyHead_;
+        while(current != dummyEnd_)
+        {
+            if(priority  < current->priority_)
+            {
+                Item* item = new Item(data, priority);
+                item->next = current;
+                prev->next = item;
+                return;
+            }
+            else
+            {
+                prev = prev->next;
+                current = current->next;
+            }
+        }
+
+        Item* item = new Item(data, priority);
+        item->next = current;
+        prev->next = item;
+        
+    }
+    int getNextItem()
+    {
+        if(!isEmpty())
+        {
+            int data = dummyHead_->next->data_;
+            Item* nextItem = dummyHead_->next->next;
+            delete dummyHead_->next;
+            dummyHead_->next = nextItem;
+            return data;
+        }
+        return -1;
+    }
+    bool isEmpty()
+    {
+        return dummyHead_->next == dummyEnd_;
+    }
+
+    void print()
+    {
+        Item* current = dummyHead_->next;
+        while(current != dummyEnd_)
+        {
+            std::cout << "(" << current->data_ << ", " << current->priority_  << ")" << std::endl;
+            current = current->next;
+        }
+    }
+private:
+    Item *dummyHead_;
+    Item *dummyEnd_;
+};
+
+int main()
+{
+    PriorityQueue queue;
+    queue.putItem(8, 1);
+    queue.putItem(4, 3);
+    queue.putItem(7, 0);
+    queue.putItem(3, 0);
+    
+    std::cout << queue.getNextItem() << std::endl;
+
+    queue.putItem(6, 2);
+    queue.putItem(5, 4);
+
+    std::cout << queue.getNextItem() << std::endl;
+    std::cout << queue.getNextItem() << std::endl;
+    std::cout << queue.getNextItem() << std::endl;
+    std::cout << queue.getNextItem() << std::endl;
+    std::cout << queue.getNextItem() << std::endl;
+}
 ```
