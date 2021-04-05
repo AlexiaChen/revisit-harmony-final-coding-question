@@ -239,10 +239,10 @@ public:
        }
     }
 
-    // just only completed this method at that time
+    // just only completed this method at that time, its correct cause much moreb easier compared with insert method
     Node get_next()
     {
-       if(dummy->next)
+       if(dummyHead->next)
        {
            Node node;
            node.data = dummyHead->next->data;
