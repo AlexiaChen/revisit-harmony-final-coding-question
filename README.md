@@ -2,7 +2,7 @@
 
 Revisit Harmony Final Coding Question
 
-Because it is not good for my performance in the final round coding question of the interview using English, So I just publish a survy for the coding question and show  that  my thinking process at that time.
+Because it is not good for my performance in the final round coding question of the interview using English, So I just publish a survy for the coding question and show  that  my thinking process at that time. It could say that 'have a beginning and an end'.
 
 The Coding Question:
 
@@ -54,16 +54,16 @@ getNextItem() // must return (5, 3)
 At first I saw the question description, I first think I need using C++ standard library <queue>
 , it is implemented priority queue this data structure(maybe using min heap and max heap), but I think the key of the coding question may not such easy, maybe cannot use C++ standard library so that I did not ask interviewer: Can I use standard library for priority queue? 
 
-so I cannot implement priority queue using max-heap or min-heap（tree-like data structure） online, it is much more complex, and next, my brain went blank, I have no idea for that. a few minutes after, interviewer  saw that I didn't write any code on the whiteboard, so he shows me some tips:  How to store data?   tree? map ? linked-list ?  Why not linked-list ?   
+But I cannot implement priority queue using max-heap or min-heap（tree-like data structure） online, it is much more complex, and next, my brain went blank, I have no idea for that. a few minutes after, interviewer  saw that I didn't write down any code on the whiteboard online, so he shows me some tips:  How to store data?   tree? map ? linked-list ?  Why not linked-list ?   
 
-So I go and review the question and found that it could implemented using single-linked list, maybe the key of question is about using linked-list, but cannot use standard library for linked-list, it must implement by myself, so that I did not ask interviewer: Can I use standard library for linked-list ?
+So I go and review the question and found that it could implemented using single-linked list, maybe the key of question is about using linked-list, but cannot use standard library for linked-list, it must implement the data structure by myself, so that I did not ask interviewer: Can I use standard library for linked-list ?
 
 I just do it, and finnally not completed question, cause some corner cases about linked-list
 
 
 ## Correct Question Answer
 
-- the question answer below if could use C++ standard library \<queue\>:
+### the question answer below if could use C++ standard library \<queue\>:
 
 ```cpp
 // g++ main.cpp -o main
@@ -127,7 +127,7 @@ int main()
 }
 ```
 
-- the question answer below if could use C++ standard library \<list\>:
+### the question answer below if could use C++ standard library \<list\>:
 
 ```cpp
 #include <iostream>
@@ -200,9 +200,9 @@ int main()
 }
 ```
 
-- the question answer below if could not use C++ standard library about any related data structure:
+### the question answer below if could not use C++ standard library about any related data structure:
 
-this is my answer in the final interview, but it is **not completed** at that time, and my brain goes blank.
+- this is my answer in the final interview, but it is **not completed** at that time, and my brain goes blank.
 
 ```cpp
 typedef struct Node {
@@ -269,7 +269,7 @@ private:
 };
 ```
 
-this is my answer now, for completing the question
+- this is my answer now, for completing the question
 
 ```cpp
 #include <iostream>
