@@ -60,6 +60,7 @@ So I go and review the question and found that it could implemented using single
 
 I just do it, and finnally not completed question, cause some corner cases about linked-list
 
+So now I will write down different version correct answer of this question in the next section.
 
 ## Correct Question Answer
 
