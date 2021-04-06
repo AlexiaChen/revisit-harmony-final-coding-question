@@ -52,11 +52,11 @@ getNextItem() // must return (5, 3)
 ```
 
 At first I saw the question description, I first think I need using C++ standard library <queue>
-, it is implemented priority queue this data structure(maybe using min heap and max heap), but I think the key of the coding question may not such easy, maybe cannot use C++ standard library so that I did not ask interviewer: Can I use standard library for priority queue? 
+, it is implemented priority queue this data structure(maybe using min heap and max heap), but I think the key point of the coding question may not such easy, maybe cannot use C++ standard library so that I did not ask interviewer: Can I use standard library for priority queue? 
 
 But I cannot implement priority queue using max-heap or min-heap（tree-like data structure） online, it is much more complex, and next, my brain went blank, I have no idea for that. a few minutes later, interviewer  saw that I didn't write down any code on the whiteboard online, so he shows me some tips:  How to store data?   tree? map ? linked-list ?  Why not linked-list ?   
 
-So I go and review the question and found that it could implemented using single-linked list, maybe the key of question is about using linked-list, but cannot use standard library for linked-list, it must implement the data structure by myself, so that I did not ask interviewer: Can I use standard library for linked-list ?
+So I go and review the question and found that it could implemented using single-linked list, maybe the key point of question is about using linked-list, but cannot use standard library for linked-list, it must implement the data structure by myself, so that I did not ask interviewer: Can I use standard library for linked-list ?
 
 I just do it, and finnally not completed question, cause some corner cases about linked-list
 
